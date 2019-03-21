@@ -21,14 +21,6 @@ const mutations = {
 }
 
 const actions = {
-<<<<<<< HEAD
-  submit(state, payload) {
-    console.log('payload...', payload);
-    return new Promise(async (resolve, reject) => {
-      setTimeout(function () {
-        resolve();
-      }, 5000);
-=======
   async submit(state, {...payload}) {
     return new Promise(async(resolve, reject) => {
       //填充经纬度
@@ -38,7 +30,6 @@ const actions = {
       payload.address = JSON.stringify(payload.address);
       let result = await addSign(payload);
       resolve(result)
->>>>>>> ly
     })
 
   }
