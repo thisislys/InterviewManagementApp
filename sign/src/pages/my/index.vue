@@ -9,7 +9,7 @@
     <ul>
       <li>
         <icon type="waiting" size="18px" />
-        <span>
+        <span @click="goMyList">
           我的面试
         </span>
         <image src="/static/images/arrow.svg"></image>
@@ -42,6 +42,9 @@ export default {
   methods: {
     getPhoneNumber(e){
       console.log('e...', e);
+    },
+    goMyList(){
+      wx.navigateTo({ url: '/pages/signList/main' });
     }
   },
 
