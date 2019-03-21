@@ -151,6 +151,23 @@ export default {
       this.current.start_time = moment(this.dateShow).unix();
       let data = await this.submitInterview(this.current);
       console.log('data...', data);
+      //处理添加结果
+      if(data.code==0){
+wx.showToast({
+  title:"添加面试成功",
+  icon:"none",
+  success:res=>{
+    wx.navigateTo({
+      url:'/pages/index/main'
+    })
+  }
+})
+      }else{
+        wx.showToast({
+          title:data.msg,
+          icon:'none'
+        })
+      }
     }
   }
 }
