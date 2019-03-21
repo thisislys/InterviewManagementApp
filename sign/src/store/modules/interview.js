@@ -9,17 +9,20 @@ const state = {
 }
 
 const mutations = {
-  updateState(state, payload){
-    state.current = {...state.current, ...payload};
+  updateState(state, payload) {
+    state.current = {
+      ...state.current,
+      ...payload
+    };
   }
 }
 
 
 const actions = {
-  submit(state, payload){
+  submit(state, payload) {
     console.log('payload...', payload);
-    return new Promise((resolve, reject)=>{
-      setTimeout(function(){
+    return new Promise(async (resolve, reject) => {
+      setTimeout(function () {
         resolve();
       }, 5000);
     })
