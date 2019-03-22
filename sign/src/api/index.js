@@ -12,3 +12,7 @@ export let addSign = params => {
     params
   )
 }
+export let getSign = params => {
+  console.log('cccc', params)
+  return request.get('/sign', params)
+}

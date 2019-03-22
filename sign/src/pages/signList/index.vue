@@ -7,8 +7,7 @@
 
       
     </sList>
-    <main class="orderInfo">
-      <ul class="orderInfo-text">
+      <!-- <ul class="orderInfo-text">
         <li>
           <h3>北京科技大学</h3>
           <p>
@@ -23,51 +22,7 @@
             北京市海淀区哈哈哈哈哈哈哈哈
           </h4>
         </li>
-        <li>
-          <h3>北京科技大学</h3>
-          <p>
-            <span>中午</span>
-            <span>12号12点12分</span>
-          </p>
-          <div>
-            <button class="active">打卡</button>
-            <button>放弃</button>
-          </div>
-          <h4>
-            北京市海淀区哈哈哈哈哈哈哈哈
-          </h4>
-        </li>
-        <li>
-          <h3>北京科技大学</h3>
-          <p>
-            <span>中午</span>
-            <span>12号12点12分</span>
-          </p>
-          <div>
-            <button class="active">打卡</button>
-            <button>放弃</button>
-          </div>
-          <h4>
-            北京市海淀区哈哈哈哈哈哈哈哈
-          </h4>
-        </li>
-        <li>
-          <h3>北京科技大学</h3>
-          <p>
-            <span>中午</span>
-            <span>12号12点12分</span>
-          </p>
-          <div>
-            <button class="active">打卡</button>
-            <button>放弃</button>
-          </div>
-          <h4>
-            北京市海淀区哈哈哈哈哈哈哈哈
-          </h4>
-        </li>
-       
-        
-      </ul> 
+      </ul>  -->
     </main>
   </div>
 </template>
@@ -134,74 +89,75 @@ header{
     flex: 1;
     text-align: center;
     font-size: 34rpx;
+    border-bottom:10rpx solid #fff;
   }
   span.active{
-    border-bottom:10rpx solid  rgb(15, 142, 193)!important; 
+    border-bottom:10rpx solid  rgb(55, 147, 184)!important; 
 
   }
 }
-.orderInfo{
-  width: 100%;
-  height: 100%;
-  background:skyblue;
-  padding: 20rpx 20rpx;
-  box-sizing: border-box;
-  overflow-y: auto;
-  li{
-    width: 100%;
-    // height:380rpx;
-    background: #ffffff;
-    // box-shadow:5rpx 2rpx 2rpx 5rpx #cfcfcf; 
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius:30rpx;
-    padding: 0 20rpx;
-    margin-bottom: 20rpx;
-    box-sizing: border-box; 
-    h3{
-      width: 100%;
-      height:100rpx;
-      line-height:100rpx;
-      font-size:36rpx; 
+// .orderInfo{
+//   width: 100%;
+//   height: 100%;
+//   background:skyblue;
+//   padding: 20rpx 20rpx;
+//   box-sizing: border-box;
+//   overflow-y: auto;
+//   li{
+//     width: 100%;
+//     // height:380rpx;
+//     background: #ffffff;
+//     // box-shadow:5rpx 2rpx 2rpx 5rpx #cfcfcf; 
+//     display:flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     border-radius:30rpx;
+//     padding: 0 20rpx;
+//     margin-bottom: 20rpx;
+//     box-sizing: border-box; 
+//     h3{
+//       width: 100%;
+//       height:100rpx;
+//       line-height:100rpx;
+//       font-size:36rpx; 
 
-    }
-    h4{
-      width: 100%;
-      height:100rpx;
-      line-height:100rpx;
-      border-top:1rpx dashed #cfcfcf;
-      font-size:36rpx;  
-    }
-    div,p{
-      width: 100%;
-      height:100rpx;
-      line-height: 100rpx;
-      display: flex;
-      button{
-        width: 200rpx;
-        height:80rpx;
-        line-height:80rpx;
-        border: 0;
-        outline: none;
-        font-size: 36rpx;
-        border: 1rpx solid skyblue;
-        border-radius:20rpx; 
-      }
-      button.btnclass{
-        color:#ffffff;
-        background: skyblue
-      }
-    }
-    p{
-      justify-content: space-between;
-      span:nth-child(1){
-        font-size: 40rpx;
-      }
-      span:nth-child(2){
-        color: skyblue;
-      }
-    }
-  }
-}
+//     }
+//     h4{
+//       width: 100%;
+//       height:100rpx;
+//       line-height:100rpx;
+//       border-top:1rpx dashed #cfcfcf;
+//       font-size:36rpx;  
+//     }
+//     div,p{
+//       width: 100%;
+//       height:100rpx;
+//       line-height: 100rpx;
+//       display: flex;
+//       button{
+//         width: 200rpx;
+//         height:80rpx;
+//         line-height:80rpx;
+//         border: 0;
+//         outline: none;
+//         font-size: 36rpx;
+//         border: 1rpx solid skyblue;
+//         border-radius:20rpx; 
+//       }
+//       button.btnclass{
+//         color:#ffffff;
+//         background: skyblue
+//       }
+//     }
+//     p{
+//       justify-content: space-between;
+//       span:nth-child(1){
+//         font-size: 40rpx;
+//       }
+//       span:nth-child(2){
+//         color: skyblue;
+//       }
+//     }
+//   }
+// }
 </style>
