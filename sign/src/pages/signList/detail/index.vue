@@ -3,30 +3,34 @@
     <ul>
       <li>
         <lable for="">面试地点</lable>
-        <span></span>
+        <span>{{info.address.address}}</span>
       </li>
       <li>
         <lable for="">面试时间</lable>
-        <span></span>
-      </li>
-      <li>
-        <lable for="">面试地址</lable>
-        <span></span>
+        <span>{{info.state_time}}</span>
       </li>
       <li>
         <lable for="">联系方式</lable>
-        <span></span>
+        <span>{{info.phone}}</span>
       </li>
       <li>
         <lable for="">是否提醒</lable>
+        <span>{{info.remind?"未提醒":"已提醒"}}</span>
+      </li>
+      <li>
+        <lable for="">面试状态</lable>
         <span></span>
+      </li>
+      <li>
+        <lable for="">取消提醒</lable>
+        <switch :checked="!!info.remind" bindchange="switchiChange" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-// import {getLocation, getAuth} from '@/utils/index.js'
+
 import {mapState,mapActions} from 'vuex'
 
 export default {

@@ -42,7 +42,7 @@ const actions = {
        if(data.data.address){
          data.data.address=JSON.parse(data.data.reject)
        }
-      //  data.data.address=JSON.parse(data.data.address)
+       data.data.start_time=formatTime(data.data.start_time)
        commit('updataState',{info:data.data});
        setTimeout(function(){
          resolve( )
