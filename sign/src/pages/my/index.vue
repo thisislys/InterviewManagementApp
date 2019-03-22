@@ -44,7 +44,7 @@ export default {
       console.log('e...', e);
     },
     goMyList(){
-      wx.navigateTo({ url: '/pages/signList/main' });
+      wx.navigateTo({ url: '/pages/signList/list/main' });
     }
   },
 

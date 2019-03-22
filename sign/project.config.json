@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -54,9 +54,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "面试列表",
-					"pathName": "pages/signList/main",
+					"pathName": "pages/signList/list/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "列表详情",
+					"pathName": "pages/signList/detail/main",
+					"query": "id=11",
 					"scene": null
 				}
 			]

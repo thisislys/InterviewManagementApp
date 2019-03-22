@@ -1,18 +1,19 @@
 <template>
     <main class="orderInfo">
-
-    <ul  v-for="(item, index) in list" :key="index" class="orderInfo-text">
+    
+   <!-- <p @click="goDetail(5)">详情</p> -->
+    <ul  v-for="item in list" :key="item.id" class="orderInfo-text" @click="goDetail(item.id)">
         <li>
           <h3>{{item.company}}</h3>
           <p>
-            <span></span>
+            
             <span>
               {{item.start_time}}
               </span>
           </p>
           <div>
-            <button class="btnclass">打卡</button>
-            <button>放弃</button>
+            <button class="btnclass">未开始</button>
+            <button>未放弃</button>
           </div>
           <h4>
             {{item.address.address}}
@@ -30,15 +31,22 @@ export default {
       type: Array,
       default: []
     }
-  // },
-  // methods: {
-  //   formatAddress(adress) {
-  //     address = JSON.parse(address);
-  //     return address.address
-  //   },
-  //   formatTime (start_time) {
-  //     return moment(start_time*1000).format('YYYY-MM-DD HH:MM')
-  //   }
+  },
+  methods: {
+    
+    formatAddress(adress) {
+      address = JSON.parse(address);
+      return address.address
+    },
+    formatTime (start_time) {
+      return moment(start_time*1000).format('YYYY-MM-DD HH:MM')
+    },
+    goDetail(id){
+      console.log('iddd',id)
+      wx.navigateTo({
+        url:"/pages/signList/detail/main?id="+id
+      })
+    }
   }
 }
 </script>

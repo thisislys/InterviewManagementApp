@@ -7,6 +7,7 @@
 
       
     </sList>
+    
       <!-- <ul class="orderInfo-text">
         <li>
           <h3>北京科技大学</h3>
@@ -23,13 +24,13 @@
           </h4>
         </li>
       </ul>  -->
-    </main>
+  
   </div>
 </template>
 
 <script>
 import {getLocation, getAuth} from '@/utils/index.js'
-import sList from '../../components/slist.vue'
+import sList from '../../../components/slist.vue'
 import {mapState, mapMutations, mapActions} from 'vuex'
 
 export default {
