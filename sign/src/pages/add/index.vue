@@ -1,7 +1,5 @@
 <template>
 <form @submit="submit" report-submit  class="wrap">
-
- <!-- <div > -->
     <p>面试信息</p>
     <ul>
       <li>
@@ -38,7 +36,6 @@
     <p>备注信息</p>
     <textarea type="text" v-model="current.description" placeholder="备注信息(可选，100个字以内)"/>
     <button :class="btnEnable?'': 'disable'" form-type="submit">确认</button>
-  <!-- </div> -->
 </form>
  
 </template>
@@ -135,7 +132,7 @@ export default {
       date[column] = value;
       this.info.date = date;
     },
-    // 去选择地址
+    // 去搜索地址
     goSearch() {
       wx.navigateTo({ url: "/pages/search/main" });
     },

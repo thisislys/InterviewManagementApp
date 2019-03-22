@@ -1,99 +1,89 @@
 <template>
   <div class="wrap">
     <header>
-        <span :class="active===index?'active':''" v-for="(item, index) in types" :key="index" @click="updataState({active:index})">{{item}}</span>
+      <span
+        :class="active===index?'active':''"
+        v-for="(item, index) in types"
+        :key="index"
+        @click="updataState({active:index})"
+      >{{item}}</span>
     </header>
-    <sList :list="list">
-
-      
-    </sList>
-      <!-- <ul class="orderInfo-text">
-        <li>
-          <h3>北京科技大学</h3>
-          <p>
-            <span>中午</span>
-            <span>12号12点12分</span>
-          </p>
-          <div>
-            <button class="btnclass">打卡</button>
-            <button>放弃</button>
-          </div>
-          <h4>
-            北京市海淀区哈哈哈哈哈哈哈哈
-          </h4>
-        </li>
-      </ul>  -->
-    </main>
+    <sList :list="list"></sList>
+    <p class="more" v-if="list.length">{{hasMore?'上拉加载更多': '我是有底线的'}}</p>
   </div>
 </template>
 
 <script>
-import {getLocation, getAuth} from '@/utils/index.js'
-import sList from '../../components/slist.vue'
-import {mapState, mapMutations, mapActions} from 'vuex'
+import { getLocation, getAuth } from "@/utils/index.js";
+import sList from "../../components/slist.vue";
+import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
-  data () {
+  data() {
     return {
-     types:['全部面试','未面试','已面试','已放弃']
-    }
+      types: ["全部面试", "未面试", "已面试", "已放弃"]
+    };
   },
   components: {
     sList
   },
   computed: {
     ...mapState({
-      active: state=> state.sign.active,
-      list: state=> state.sign.list
+      active: state => state.sign.active,
+      list: state => state.sign.list,
+      page: state => state.sign.list,
+      hasMore: state => state.sign.hasMore
     })
   },
 
   methods: {
     ...mapMutations({
-      updataState: 'sign/updataState'
+      updataState: "sign/updataState"
     }),
     ...mapActions({
-      getList: 'sign/getList'
-    })
-
-    //  onPullDownRefresh: function(){
-    //   console.log('下拉熟悉')
-    // },
-    // onReachBottom: function () {
-    //   console.log('加载更多')
-    // },
+      getList: "sign/getList"
+    }),
+    tabChange(index) {
+      this.updataState({ active: index, page: 1 });
+      this.getList();
+    }
   },
 
   onShow() {
-    this.getList()
+    this.getList();
+  },
+  onReachBottom() {
+    if (this.hasMore) {
+      this.updataState({ page: this.page + 1 });
+      this.getList();
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-.wrap{
+.wrap {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-header{
-  background: #F4F6F9;
+header {
+  background: #f4f6f9;
   width: 100%;
-  height:110rpx;
-  line-height:100rpx;
- 
+  height: 110rpx;
+  line-height: 100rpx;
+
   display: flex;
   align-items: center;
-  span{
+  span {
     flex: 1;
     text-align: center;
     font-size: 34rpx;
-    border-bottom:10rpx solid #fff;
+    border-bottom: 10rpx solid #fff;
   }
-  span.active{
-    border-bottom:10rpx solid  rgb(55, 147, 184)!important; 
-
+  span.active {
+    border-bottom: 10rpx solid rgb(55, 147, 184) !important;
   }
 }
 // .orderInfo{
@@ -107,19 +97,19 @@ header{
 //     width: 100%;
 //     // height:380rpx;
 //     background: #ffffff;
-//     // box-shadow:5rpx 2rpx 2rpx 5rpx #cfcfcf; 
+//     // box-shadow:5rpx 2rpx 2rpx 5rpx #cfcfcf;
 //     display:flex;
 //     flex-direction: column;
 //     justify-content: space-between;
 //     border-radius:30rpx;
 //     padding: 0 20rpx;
 //     margin-bottom: 20rpx;
-//     box-sizing: border-box; 
+//     box-sizing: border-box;
 //     h3{
 //       width: 100%;
 //       height:100rpx;
 //       line-height:100rpx;
-//       font-size:36rpx; 
+//       font-size:36rpx;
 
 //     }
 //     h4{
@@ -127,7 +117,7 @@ header{
 //       height:100rpx;
 //       line-height:100rpx;
 //       border-top:1rpx dashed #cfcfcf;
-//       font-size:36rpx;  
+//       font-size:36rpx;
 //     }
 //     div,p{
 //       width: 100%;
@@ -142,7 +132,7 @@ header{
 //         outline: none;
 //         font-size: 36rpx;
 //         border: 1rpx solid skyblue;
-//         border-radius:20rpx; 
+//         border-radius:20rpx;
 //       }
 //       button.btnclass{
 //         color:#ffffff;

@@ -16,7 +16,7 @@
       </li>
     </ul>
     <div class="phone" v-if="showPhoneDialog">
-      <p>为了更好的使用我们的服务，我们需要获取你的手机号码</p>
+      <p>请提供您的手机号码，体验更加服务</p>
       <button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">允许获取手机号</button>
     </div>
   </div>
@@ -29,7 +29,7 @@ import {mapState, mapMutations} from 'vuex'
 export default {
   data () {
     return {
-      showPhoneDialog: true
+      showPhoneDialog: false
     }
   },
 
@@ -42,6 +42,9 @@ export default {
   methods: {
     getPhoneNumber(e){
       console.log('e...', e);
+      if(e.target.errMsg==="getPhoneNumber:ok"){
+      this.showPhoneDialog = false;
+      }
     },
     goMyList(){
       wx.navigateTo({ url: '/pages/signList/main' });
@@ -50,7 +53,7 @@ export default {
 
   onShow() {
     if (!this.info.phone){
-      this.showPhoneDialog = false;
+      this.showPhoneDialog = true;
     }
   }
 }
@@ -94,9 +97,16 @@ header{
   p{
     width: 60%;
     background: #fff;
+  // border-radius: 20rpx;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+    font-size: 30rpx;
+    height: 150rpx;
+    line-height: 150rpx;
   }
   button{
     width: 60%;
+    margin-top: -10rpx;
   }
 }
 li{
