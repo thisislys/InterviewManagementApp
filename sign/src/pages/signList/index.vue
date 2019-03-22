@@ -1,20 +1,16 @@
 <template>
   <div class="wrap">
     <header>
-        <span class="active">全部面试</span>
-        <span>未面试</span>
-        <span>已面试</span>
-        <span>已放弃</span>
+        <span :class="active===index?'active':''" v-for="(item, index) in types" :key="index" @click="updataState({active:index})">{{item}}</span>
     </header>
-    <view>
-      我的列表
-    </view>
+    <sList :list="list"></sList>
   </div>
 </template>
 
 <script>
 import {getLocation, getAuth} from '@/utils/index.js'
-import {mapState, mapMutations} from 'vuex'
+import sList from '../../components/slist.vue'
+import {mapState, mapMutations, mapActions} from 'vuex'
 
 export default {
   data () {
@@ -22,17 +18,27 @@ export default {
      types:['全部面试','未面试','已面试','已放弃']
     }
   },
-
+  components: {
+    sList
+  },
   computed: {
-    
+    ...mapState({
+      active: state=> state.sign.active,
+      list: state=> state.sign.list
+    })
   },
 
   methods: {
-    
+    ...mapMutations({
+      updataState: 'sign/updataState'
+    }),
+    ...mapActions({
+      getList: 'sign/getList'
+    })
   },
 
   onShow() {
-   
+    this.getList()
   }
 }
 </script>
