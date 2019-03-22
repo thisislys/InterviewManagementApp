@@ -45,7 +45,7 @@ const actions = {
       //  data.data.address=JSON.parse(data.data.address)
        commit('updataState',{info:data.data});
        setTimeout(function(){
-         resolve()
+         resolve( )
        },5000)
     })
   }
