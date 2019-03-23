@@ -64,7 +64,7 @@
 					"id": 4,
 					"name": "列表详情",
 					"pathName": "pages/signList/detail/main",
-					"query": "id=11",
+					"query": "id=12",
 					"scene": null
 				}
 			]
