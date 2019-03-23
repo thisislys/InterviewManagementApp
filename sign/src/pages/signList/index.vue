@@ -1,12 +1,10 @@
 <template>
   <div class="wrap">
     <header>
-        <span :class="active===index?'active':''" v-for="(item, index) in types" :key="index" @click="updataState({active:index})">{{item}}</span>
+        <span :class="active===index?'active':''" v-for="(item, index) in types" :key="index" @click="updateState({active:index})">{{item}}</span>
     </header>
-    <sList :list="list">
-
-      
-    </sList>
+    <sList :list="list"></sList>
+    <p class="more" v-if="list.length">{{hasMore?'上拉加载更多': '我是有底线的'}}</p>
       <!-- <ul class="orderInfo-text">
         <li>
           <h3>北京科技大学</h3>
@@ -23,7 +21,6 @@
           </h4>
         </li>
       </ul>  -->
-    </main>
   </div>
 </template>
 
@@ -44,28 +41,32 @@ export default {
   computed: {
     ...mapState({
       active: state=> state.sign.active,
-      list: state=> state.sign.list
+      list: state=> state.sign.list,
+      page: state=>state.sign.page,
+      hasMore: state=>state.sign.hasMore
     })
   },
 
   methods: {
     ...mapMutations({
-      updataState: 'sign/updataState'
+      updateState: 'sign/updateState'
     }),
     ...mapActions({
       getList: 'sign/getList'
-    })
-
-    //  onPullDownRefresh: function(){
-    //   console.log('下拉熟悉')
-    // },
-    // onReachBottom: function () {
-    //   console.log('加载更多')
-    // },
+    }),
+    tabChange(index){
+      this.updateState({active: index, page: 1});
+      this.getList();
+    }
   },
-
   onShow() {
     this.getList()
+  },
+  onReachBottom(){
+    if (this.hasMore){
+      this.updateState({page: this.page+1});
+      this.getList();
+    }
   }
 }
 </script>
