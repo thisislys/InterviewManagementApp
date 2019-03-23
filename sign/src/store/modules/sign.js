@@ -1,5 +1,7 @@
 import {
-  getSign
+  getSign,
+  getSignDetail,
+  updateSignDetail
 } from '@/api/index'
 const moment = require('moment')
 const state = {
@@ -22,7 +24,7 @@ const mutations = {
     for (let ind in payload) {
       state[ind] = payload[ind]
     }
-    console.log(payload, state)
+    console.log(payload, state, 123456)
   }
 }
 const actions = {
@@ -31,6 +33,7 @@ const actions = {
     commit,
     state
   }, payload) {
+
     return new Promise(async (resolve, reject) => {
       let params = {};
       if (state.active) {
@@ -38,18 +41,20 @@ const actions = {
       }
       params.page = state.page;
       params.pageSize = state.pageSize;
-
+      console.log(params.page, 'aaaaaaaaa')
       let result = await getSign(params)
       result.data.forEach(item => {
         item.address = JSON.parse(item.address)
         item.start_time = formatTime(item.start_time)
       })
+
       //判断是替换还是添加
       if (state.page === 1) {
         commit('updataState', {
           list: result.data
         })
       } else {
+        console.log([...state.list, ...result.data], 666)
         commit('updataState', {
           list: [...state.list, ...result.data]
         })
@@ -58,13 +63,6 @@ const actions = {
       resolve();
     })
   },
-  //   //获取面试详情
-  //   gitDetail({
-  //     commit
-  //   }, payload) {
-  //     console.log('payload....', payload)
-  //   }
-  // }
 
   // 获取面试详情
   getDetail({
