@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="(item, index) in list" :key="index">
+    <li v-for="(item, index) in list" :key="index" @click="goDetail(item.id)">
       <p>{{item.company}}</p>
       <p>{{item.address.address}}</p>
       <p>{{item.start_time}}</p>
@@ -25,6 +25,13 @@ export default {
   //   formatTime (start_time) {
   //     return moment(start_time*1000).format('YYYY-MM-DD HH:MM')
   //   }
+  },
+  methods: {
+    goDetail () {
+      wx.navigateTo({
+        url: '../signList/detail/main?id='+1
+      })
+    }
   }
 }
 </script>
