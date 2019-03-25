@@ -51,3 +51,12 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
     - [ ] 打卡功能
     - [ ] 面试导航
 - [ ] 支付功能
+
+## 模板推送步骤
+-获取模板ID
+    - 通过模版消息管理接口获取模版ID（详见模版消息管理）
+    - 在微信公众平台手动配置获取模版ID
+-获取formId
+    -正常获取
+    -用伪formid  button submit 用form包裹
+-调用接口下发模板消息 

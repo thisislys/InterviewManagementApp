@@ -33,10 +33,19 @@ export default {
   methods: {
     goDetail(id) {
       wx.navigateTo({
-        url: "/pages/detail/main?id=" + id
+        url: '../signList/detail/main?id=' + id
       });
-    }
+  // },
+  // methods: {
+  //   formatAddress(adress) {
+  //     address = JSON.parse(address);
+  //     return address.address
+  //   },
+  //   formatTime (start_time) {
+  //     return moment(start_time*1000).format('YYYY-MM-DD HH:MM')
+  //   }
   }
+    }
 };
 </script>
 
