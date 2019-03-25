@@ -72,11 +72,10 @@ export default {
          title:"温馨提示",
          content:"确定要放弃本次面试吗",
          success:res=>{
-           await this.updatSignDetail({
+          //  await this.updatSignDetail({
+             this.updatSignDetail({
              id:this.id,
-             params:{
-               status:1
-             }
+             params:{ status:1}
            })
          }
 
