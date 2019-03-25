@@ -13,7 +13,7 @@
           </p>
           <div>
             <button class="btnclass">未开始</button>
-            <button>未放弃</button>
+            <button>未提醒</button>
           </div>
           <h4>
             {{item.address.address}}
@@ -33,16 +33,17 @@ export default {
     }
   },
   methods: {
-    
     formatAddress(adress) {
+     
       address = JSON.parse(address);
+      //  console.log(address,'8989')
       return address.address
     },
     formatTime (start_time) {
       return moment(start_time*1000).format('YYYY-MM-DD HH:MM')
     },
     goDetail(id){
-      console.log('iddd',id)
+      // console.log('iddd',id)
       wx.navigateTo({
         url:"/pages/signList/detail/main?id="+id
       })
@@ -92,11 +93,12 @@ export default {
       line-height: 80rpx;
       display: flex;
       button{
-        width: 150rpx;
+        width: 200rpx;
         height:60rpx;
         line-height:60rpx;
         border: 0;
         outline: none;
+        font-size:36rpx; 
         font-size: 36rpx;
         border: 1rpx solid skyblue;
         border-radius:20rpx; 

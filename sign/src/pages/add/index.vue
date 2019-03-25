@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <from class="wrap" @submit="submit" report-submit>
     <p>面试信息</p>
     <ul>
       <li>
@@ -35,8 +35,11 @@
     </ul>
     <p>备注信息</p>
     <textarea type="text" v-model="current.description" placeholder="备注信息(可选，100个字以内)"/>
-    <button :class="btnEnable?'': 'disable'" @click="submit">确认</button>
-  </div>
+    <!-- <button :class="btnEnable?'': 'disable'"
+     @click="submit">确认</button> -->
+     <button :class="btnEnable?'': 'disable'"
+     from-type="submit">确认</button>
+  </from>
 </template>
 
 
@@ -189,9 +192,12 @@ export default {
         });
         return false;
       }
+      
       // 添加时间戳到表单
       this.current.start_time = moment(this.dateShow).unix();
-      let data = await this.submitInterview(this.current);
+      //添加from_id
+      this.current.from_id=e.target.fromId;
+     let data = await this.submitInterview(this.current);
       console.log("data...", data);
       //处理添加结果
       if (data.code == 0) {

@@ -19,6 +19,11 @@ export let getSign = params => {
 }
 //面试跳转详情
 export let getSignDetail = id => {
-  console.log('cccc',id)
+  console.log('ccccid',id)
   return request.get('/sign/'+id)
+}
+//更新面试
+export let updatSignDetail = (id,params)=> {
+  console.log('ccccid',id)
+  return request.get('/sign/'+id,params)
 }

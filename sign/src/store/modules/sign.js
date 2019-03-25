@@ -35,18 +35,30 @@ const actions = {
   },
   //获取面试详情
   getDetail({commit},payload){
-    console.log(payload,'pay')
+    
     return new Promise(async (resolve,reject)=>{
        let data=await getSignDetail(payload);
-       console.log("data",data);
+       console.log(data,'get');
        if(data.data.address){
-         data.data.address=JSON.parse(data.data.reject)
+        //  console.log(data.data.address,'ss')
+         data.data.address=JSON.parse(data.data.address);
+         console.log(data.data.address,'ss')
        }
-       data.data.start_time=formatTime(data.data.start_time)
-       commit('updataState',{info:data.data});
-       setTimeout(function(){
-         resolve( )
-       },5000)
+        commit('updataState',{info:data.data});
+        resolve( )
+    })
+  },
+
+  //updatSignDetail更新数据状态
+
+  updatSignDetail({commit,dispatch},payload){
+    return new Promise(async(resolve,reject)=>{
+      let data=await updatSignDetail(payload.id,payload.params);
+      console.log('data',data);
+      if(data.code==0){
+        dispatch('getDetail',payload.id);
+      }
+      resolve(data);
     })
   }
 }
