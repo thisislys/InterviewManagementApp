@@ -5,7 +5,7 @@
         :class="active===index?'active':''"
         v-for="(item, index) in types"
         :key="index"
-        @click="updataState({active:index})"
+        @click="tabChange(index)"
       >{{item}}</span>
     </header>
     <sList :list="list"></sList>
@@ -31,11 +31,10 @@ export default {
     ...mapState({
       active: state => state.sign.active,
       list: state => state.sign.list,
-      page: state => state.sign.list,
+      page: state => state.sign.page,
       hasMore: state => state.sign.hasMore
     })
   },
-
   methods: {
     ...mapMutations({
       updataState: "sign/updataState"
@@ -48,13 +47,15 @@ export default {
       this.getList();
     }
   },
-
   onShow() {
     this.getList();
   },
   onReachBottom() {
+    console.log(this.list.length,'list')
+    console.log('触发了',this.hasMore)
+    let page=this.page + 1
     if (this.hasMore) {
-      this.updataState({ page: this.page + 1 });
+      this.updataState({ page });
       this.getList();
     }
   }
@@ -85,6 +86,12 @@ header {
   span.active {
     border-bottom: 10rpx solid rgb(55, 147, 184) !important;
   }
+}
+.more{
+  
+  position: absolute;
+  bottom:-1rpx;
+  left:35%;
 }
 // .orderInfo{
 //   width: 100%;

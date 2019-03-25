@@ -7,7 +7,7 @@ const moment = require('moment')
 const state = {
   active: 0,
   page: 1,
-  pageSize: 10,
+  pageSize: 3,
   list: [],
   info: {},
   hasMore: true
@@ -21,10 +21,11 @@ const mutations = {
         state.hasMore = false
       }
     }
+    // 
     for (let ind in payload) {
       state[ind] = payload[ind]
     }
-    console.log(payload, state, 123456)
+    // payload=JSON.parse(payload.page)
   }
 }
 const actions = {
@@ -33,7 +34,6 @@ const actions = {
     commit,
     state
   }, payload) {
-
     return new Promise(async (resolve, reject) => {
       let params = {};
       if (state.active) {
@@ -41,8 +41,9 @@ const actions = {
       }
       params.page = state.page;
       params.pageSize = state.pageSize;
-      console.log(params.page, 'aaaaaaaaa')
-      let result = await getSign(params)
+      let result = await getSign(params);
+      console.log(result, 'aaaaaaaaa')
+
       result.data.forEach(item => {
         item.address = JSON.parse(item.address)
         item.start_time = formatTime(item.start_time)
@@ -54,7 +55,6 @@ const actions = {
           list: result.data
         })
       } else {
-        console.log([...state.list, ...result.data], 666)
         commit('updataState', {
           list: [...state.list, ...result.data]
         })
@@ -87,7 +87,6 @@ const actions = {
   }, payload) {
     return new Promise(async (resolve, reject) => {
       let data = await updateSignDetail(payload.id, payload.params);
-      console.log('data...', data);
       if (data.code == 0) {
         // 重新获取详情
         dispatch('getDetail', payload.id);

@@ -15,10 +15,10 @@
     ></map>
     <!-- 重新定位图标 -->
     <cover-view class="current">
-      <cover-image class="location" @tap="goCurrent" src="/static/images/location.png" />
+      <cover-image class="location" @tap="goCurrent" src="/static/images/location.png"/>
       <button class="add" @tap="goAdd">添加面试</button>
       <cover-view class="my" @tap="goMy">
-        <cover-image src="/static/images/my.png" />
+        <cover-image src="/static/images/my.png"/>
       </cover-view>
     </cover-view>
     <!-- vuex最简单的demo -->
@@ -26,97 +26,107 @@
       <button @click="btnClick('+')">+</button>
       <span>{{state}}</span>
       <button @click="btnClick('-')">-</button>
-    </div> -->
+    </div>-->
   </div>
 </template>
 
 <script>
-import {getLocation, getAuth} from '@/utils/index.js'
-import {mapState, mapMutations} from 'vuex'
+import { getLocation, getAuth } from "@/utils/index.js";
+import { mapState, mapMutations } from "vuex";
 
 export default {
-  data () {
+  data() {
     return {
       // 用户当前位置
       location: {
         latitude: 40.03298,
         longitude: 116.29891
       },
-      markers: [{
-        iconPath: '/static/images/job.png',
-        id: 0,
-        latitude: 40.03298,
-        longitude: 116.29891,
-        width: 50,
-        height: 50
-      }]
-    }
+      markers: [
+        {
+          iconPath: "/static/images/job.png",
+          id: 0,
+          latitude: 40.03298,
+          longitude: 116.29891,
+          width: 50,
+          height: 50
+        }
+      ]
+    };
   },
 
   computed: {
     ...mapState({
-      state: state=>state.index.count,
-      state2: state=>state.index.count,
+      state: state => state.index.count,
+      state2: state => state.index.count
     })
   },
 
   methods: {
     ...mapMutations({
-      changeNum: 'index/changeCount'
+      changeNum: "index/changeCount"
     }),
-    btnClick(type){
+    btnClick(type) {
       this.changeNum(type);
     },
-    regionChange(e){
-
-    },
+    regionChange(e) {},
     // 点击标注物
-    marketTap(e){
-
-    },
+    marketTap(e) {},
     // 重新定位
-    goCurrent(){
-      getAuth('scope.userLocation', async ()=>{
+    goCurrent() {
+      getAuth("scope.userLocation", async () => {
         let location = await getLocation();
-        wx.setStorageSync('location', location)
+        wx.setStorageSync("location", location);
         this.location = location;
-      })
+      });
     },
     // 去我的页面
-    goMy(){
-      wx.navigateTo({ url: '/pages/my/main' });
+    goMy() {
+      wx.navigateTo({ url: "/pages/my/main" });
     },
     // 去添加面试页面
-    goAdd(){
-      wx.navigateTo({ url: '/pages/add/main' });
+    goAdd() {
+      wx.navigateTo({ url: "/pages/add/main" });
     }
   },
-
-  created () {
-    let location = wx.getStorageSync('location');
+  onLoad() {
+    var reqTask = wx.request({
+      url: 'https://ptxcx.mia.com/newxcx/universalSale?page=1',
+      // data: {},
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        console.log(result,'111111111111111')
+      }
+    });
+  },
+  created() {
+    let location = wx.getStorageSync("location");
     this.location = location;
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-.wrap{
+.wrap {
   height: 100%;
 }
-map{
+map {
   width: 100%;
   height: 100%;
   padding-bottom: 100rpx;
   box-sizing: border-box;
 }
-.location{
+.location {
   position: fixed;
   bottom: 150rpx;
   width: 80rpx;
   height: 80rpx;
   left: 20rpx;
 }
-.add{
+.add {
   position: fixed;
   width: 100%;
   height: 100rpx;
@@ -127,7 +137,7 @@ map{
   left: 0;
   font-size: 40rpx;
 }
-.my{
+.my {
   position: fixed;
   background: #fff;
   border-top-left-radius: 50rpx;
@@ -136,10 +146,10 @@ map{
   width: 120rpx;
   height: 100rpx;
   right: 0;
-  cover-image{
+  cover-image {
     width: 70rpx;
     height: 70rpx;
-    margin-top:15rpx;
+    margin-top: 15rpx;
     margin-left: 15rpx;
     background: #eee;
     border-radius: 50%;

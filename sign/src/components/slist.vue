@@ -17,7 +17,7 @@
         </div>-->
       </li>
     </ul>
-    <p v-else id="none">当前分类还没有面试!</p>
+    <p v-else class="none">当前分类还没有面试!</p>
   </main>
 </template>
 
@@ -44,15 +44,15 @@ export default {
 
 .orderInfo {
   width: 100%;
-  height: 100%;
-  background: skyblue;
+  height: 1470rpx;
   padding: 20rpx 20rpx;
   box-sizing: border-box;
   overflow-y: auto;
+  position: relative;
   li {
     width: 100%;
     // height:380rpx;
-    background: #ffffff;
+    background: #f0f0f0;
     // box-shadow:5rpx 2rpx 2rpx 5rpx #cfcfcf;
     display: flex;
     flex-direction: column;
@@ -108,7 +108,7 @@ export default {
     }
   }
 }
-#none{
+.none{
   padding: 100rpx 0;
   text-align: center;
   font-size: 30rpx;
