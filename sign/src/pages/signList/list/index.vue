@@ -8,46 +8,16 @@
         @click="tabChange(index)"
       >{{item}}</span>
     </header>
-<<<<<<< HEAD:sign/src/pages/signList/index.vue
     <sList :list="list"></sList>
     <p class="more" v-if="list.length">{{hasMore?'上拉加载更多': '我是有底线的'}}</p>
-=======
-    <sList :list="list">
-
-      
-    </sList>
-    
-      <!-- <ul class="orderInfo-text">
-        <li>
-          <h3>北京科技大学</h3>
-          <p>
-            <span>中午</span>
-            <span>12号12点12分</span>
-          </p>
-          <div>
-            <button class="btnclass">打卡</button>
-            <button>放弃</button>
-          </div>
-          <h4>
-            北京市海淀区哈哈哈哈哈哈哈哈
-          </h4>
-        </li>
-      </ul>  -->
-  
->>>>>>> kangjintan:sign/src/pages/signList/list/index.vue
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD:sign/src/pages/signList/index.vue
 import { getLocation, getAuth } from "@/utils/index.js";
 import sList from "../../components/slist.vue";
 import { mapState, mapMutations, mapActions } from "vuex";
-=======
-import {getLocation, getAuth} from '@/utils/index.js'
-import sList from '../../../components/slist.vue'
-import {mapState, mapMutations, mapActions} from 'vuex'
->>>>>>> kangjintan:sign/src/pages/signList/list/index.vue
+
 
 export default {
   data() {
