@@ -109,7 +109,6 @@ export default {
      title:this.info.company
    })
     // wx.hideLoading()//加载loading
->>>>>>> kangjintan
   }
 }
 </script>
