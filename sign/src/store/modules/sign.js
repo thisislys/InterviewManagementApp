@@ -3,15 +3,16 @@ import {
   getSignDetail,
   updateSignDetail
 } from '@/api/index'
+
 const moment = require('moment')
 const state = {
   active: 0,
   page: 1,
-  pageSize: 3,
+  pageSize: 10,
   list: [],
   info: {},
   hasMore: true
-}
+
 const mutations = {
   updataState(state, payload) {
     if (payload.list) {
@@ -25,7 +26,6 @@ const mutations = {
     for (let ind in payload) {
       state[ind] = payload[ind]
     }
-    // payload=JSON.parse(payload.page)
   }
 }
 const actions = {
@@ -36,6 +36,7 @@ const actions = {
   }, payload) {
     return new Promise(async (resolve, reject) => {
       let params = {};
+
       if (state.active) {
         params.status = state.active - 2;
       }
@@ -43,12 +44,10 @@ const actions = {
       params.pageSize = state.pageSize;
       let result = await getSign(params);
       console.log(result, 'aaaaaaaaa')
-
       result.data.forEach(item => {
         item.address = JSON.parse(item.address)
         item.start_time = formatTime(item.start_time)
       })
-
       //判断是替换还是添加
       if (state.page === 1) {
         commit('updataState', {
@@ -95,9 +94,9 @@ const actions = {
     })
   }
 }
-
 function formatTime(start_time) {
-  return moment(start_time * 1000).format('YYYY-MM-DD HH:MM')
+
+  return moment (start_time * 1000).format('YYYY-MM-DD HH:MM')
 }
 export default {
   namespaced: true,

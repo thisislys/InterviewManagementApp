@@ -5,12 +5,17 @@ import {mapMutations} from 'vuex'
 
 export default {
   created () {
+
+    
     // 用户一打开小程序，就做定位
     // getAuth('scope.userLocation', async ()=>{
     //   let location = await getLocation();
     //   wx.setStorageSync('location', location)
     //   console.log('location...', location);
     // })
+
+
+
     let openid = wx.getStorageSync('openid');
     // if (!openid){
       // 调用登陆获取code

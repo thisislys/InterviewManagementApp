@@ -47,7 +47,7 @@ export default {
       }
     },
     goMyList(){
-      wx.navigateTo({ url: '/pages/signList/main' });
+      wx.navigateTo({ url: '/pages/signList/list/main' });
     }
   },
 

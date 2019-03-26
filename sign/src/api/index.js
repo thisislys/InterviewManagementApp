@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import request from '@/utils/request'
 
 // 登陆接口
 export let login = code => {
@@ -12,16 +12,18 @@ export let addSign = params => {
     params
   )
 }
-//获取面试列表
+// 获取面试列表
 export let getSign = params => {
   console.log('cccc', params)
   return request.get('/sign', params)
 }
-//获取面试详情
-export let getSignDetail=id=>{
-  return request.get('/sign/'+id);
+// 面试跳转详情
+export let getSignDetail = id => {
+  console.log('ccccid', id)
+  return request.get('/sign/' + id)
 }
-// 更新面试状态
-export let updateSignDetail = (id, params)=>{
-  return request.put('/sign/'+id, params);
+// 更新面试
+export let updatSignDetail = (id, params) => {
+  console.log('ccccid', id)
+  return request.get('/sign/' + id, params)
 }

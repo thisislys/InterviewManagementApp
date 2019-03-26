@@ -4,7 +4,7 @@
     "pages/search/main",
     "pages/my/main",
     "pages/add/main",
-    "pages/signList/main",
+    "pages/signList/list/main",
     "pages/signList/detail/main"
   ],
   "permission": {

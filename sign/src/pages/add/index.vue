@@ -37,7 +37,6 @@
     <textarea type="text" v-model="current.description" placeholder="备注信息(可选，100个字以内)"/>
     <button :class="btnEnable?'': 'disable'" form-type="submit">确认</button>
 </form>
- 
 </template>
 
 
@@ -166,11 +165,13 @@ export default {
         });
         return false;
       }
+      
       // 添加时间戳到表单
       this.current.start_time = moment(this.dateShow).unix();
       //添加form_id
       this.current.form_id=e.target.formId;
       let data = await this.submitInterview(this.current);
+
       console.log("data...", data);
       //处理添加结果
       if (data.code == 0) {
