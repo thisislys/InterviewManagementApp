@@ -27,3 +27,8 @@ export let updatSignDetail = (id,params)=> {
   console.log('ccccid',id)
   return request.get('/sign/'+id,params)
 }
+
+//解密数据
+export let decrypt=params=>{
+  return request.post('/usr/decrypt',params)
+}
