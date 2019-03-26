@@ -25,3 +25,7 @@ export let getSignDetail=id=>{
 export let updateSignDetail = (id, params)=>{
   return request.put('/sign/'+id, params);
 }
+//解密数据
+export let decrypt =  params=>{
+  return request.post('/user/decrypt',params);
+}

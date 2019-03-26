@@ -4,7 +4,7 @@
       <div class="avatar">
         <image src="/static/images/my.png" lazy-load="false"></image>
       </div>
-      <p>176****6605</p>
+      <p>{{formatPhone}}</p>
     </header>
     <ul>
       <li>
@@ -24,7 +24,7 @@
 
 <script>
 import {getLocation, getAuth} from '@/utils/index.js'
-import {mapState, mapMutations} from 'vuex'
+import {mapState, mapMutations,mapActions} from 'vuex'
 
 export default {
   data () {
@@ -35,13 +35,28 @@ export default {
 
   computed: {
     ...mapState({
-      info: state=>state.info
-    })
+      info: state=>state.info,
+      phone:state=>state.user.phone
+    }),
+    formatPhone(){
+      let phone=this.info.phone||this.phone;
+      if(this.phone){
+        return phone.slice(0,3)+'****'+phone.slice(7,11);
+      }else{
+        return '***********'
+      }
+    }
   },
 
   methods: {
-    getPhoneNumber(e){
-      console.log('e...', e);
+    ...mapActions({
+      bindPhoneNumber:"user/getPhoneNumber"
+    }),
+   async getPhoneNumber(e){
+      let data=await this.bindPhoneNumber({
+        iv:e.target.iv,
+        encryptedData:e.target.encryptedData
+      })
       if(e.target.errMsg==="getPhoneNumber:ok"){
       this.showPhoneDialog = false;
       }

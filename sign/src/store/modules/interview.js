@@ -4,8 +4,8 @@ import {
 const state = {
   list: [],
   current: {
-    company: '北京小桔科技有限公司',
-    phone: '17621526605',
+    company: '',
+    phone: '',
     address: '',
     description: ''
   }

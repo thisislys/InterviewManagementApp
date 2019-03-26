@@ -7,7 +7,7 @@ const moment = require('moment')
 const state = {
   active: 0,
   page: 1,
-  pageSize: 3,
+  pageSize: 10,
   list: [],
   info: {},
   hasMore: true
